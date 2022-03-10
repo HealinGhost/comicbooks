@@ -1,24 +1,24 @@
-﻿name,side,YearAppariton,superpowers,id
-Spider-Man,Superhero,1962,"Swinging, web shooting, strength, speed, wallcrawling, superhuman reflexes",1
-Wolverine,Superhero,1974,"Regenaration, strength, durability, stamina",2
-Colossus,Superhero,1975,"Metal Skin, Strength",3
-Doctor Doom,Supervillain,1962,"Technopathy, Armor Grants, Sorcery",4
-Silver Surfur,Superhero,1966,"Cosmic Power, power absorbtion",5
-Captain America,Superhero,1941,"superhuman strength, superhuman durability, shield",6
-Dormammu,Supervillain,1964,"energy projection, time travel, teleportation, life-force absorption, elemental contol",7
-Mole Man,Supervillain,1961,"genius level intelect, radar sense, japanese martil arts",8
-Morbius,Anti-hero,1971,"Genius level instellect, biochemist, biologist, superhuman strength, speed, senses, flight hypnotism, accelerated healing",9
-Red Skull,Supervillain,1941,"Genius-level intellect expert tactician, strategist, skilled hand-to-hand combatant and marksman",10
-Anti-Venom,Anti-hero,2008,"superhuman strength, durability, stamina, accelerated healing factor,  wall-crawling, web-generating abilities, spider-senses and camouflage",11
-Hulk,Superhero,1962,"Incredible superhuman strength, durability, and healing factor",12
-Magneto,Supervillain,1963,"Magnetism manipulation, shoot electromagnetic pulses, create force fields",13
-Sabretooth,Supervillain,1977,"accelerated healing, super strength, durability, agility",14
-Doctor Strange,Superhero,1963,conjure myriad spells,15
-Black Panther,Superhero,1966,"knowledge, strength and every experience of every previous Black Panther, superhuman strength, endurance, speed, agility, reflexes, stamina and senses",16
-Juggernaut,Supervillain,1965,"Superhuman strength, stamina, and durability Invulnerability via mystical force field Immunity to mental attacks via his helmet",17
-Deadpool,Anti-hero,1991,"Superhuman strength, stamina, durability, healing factor, teleportation, immortality",18
-Thor,Superhero,1962,"superhuman strength, speed, agility, durability, immunity to diseases, possesion of mjolnir ( power over storms and generates energy blasts known as anti-force)",19
-Green Goblin,Supervillain,1964,"Superhuman strength, stamina, durability, agility, reflexes, regeneration, genius-level intellect, master hand-to-hand combatant, a Goblin Glider which has a variety of offensive weapons",20
-Mysterio,Supervillain,1964,"expert designer of special effects devices and stage illusions, a master hypnotist and magician and an amateur chemist and roboticist",21
-Black Cat,Supervillain,1979,"reflexes, agility, stamina of an Olympic level acrobat",22
-Iron-Man,Superhero,1962,rich billionaire playboy,23
+﻿id,name,side,super_power,release_year
+1,Spider-Man,Superhero,"Swinging, web shooting, strength, speed, wallcrawling, superhuman reflexes",1962
+2,Wolverine,Superhero,"Regeneration, strength, durability, stamina",1974
+3,Colossus,Superhero,"Metal Skin, Strength",1975
+4,Doctor Doom,Supervillain,"Technopathy, Armor Grants, Sorcery",1962
+5,Silver Surfer,Superhero,"Cosmic Power, power absorbtion",1966
+6,Captain America,Superhero,"superhuman strength, superhuman durability, shield",1941
+7,Dormammu,Supervillain,"energy projection, time travel, teleportation, life-force absorption, elemental contol",1964
+8,Mole Man,Supervillain,"genius level intelect, radar sense, japanese martial arts",1961
+9,Morbius,Anti-hero,"Genius level instellect, biochemist, biologist, superhuman strength, speed, senses, flight hypnotism, accelerated healing",1971
+10,Red Skull,Supervillain,"Genius-level intellect expert tactician, strategist, skilled hand-to-hand combatant and marksman",1941
+11,Anti-Venom,Anti-hero,"superhuman strength, durability, stamina, accelerated healing factor,  wall-crawling, web-generating abilities, spider-senses and camouflage",2008
+12,Hulk,Superhero,"Incredible superhuman strength, durability, and healing factor",1962
+13,Magneto,Supervillain,"Magnetism manipulation, shoot electromagnetic pulses, create force fields",1963
+14,Sabretooth,Supervillain,"accelerated healing, super strength, durability, agility",1977
+15,Doctor Strange,Superhero,conjure myriad spells,1963
+16,Black Panther,Superhero,"knowledge, strength and every experience of every previous Black Panther, superhuman strength, endurance, speed, agility, reflexes, stamina and senses",1966
+17,Juggernaut,Supervillain,"Superhuman strength, stamina, and durability Invulnerability via mystical force field Immunity to mental attacks via his helmet",1965
+18,Deadpool,Anti-hero,"Superhuman strength, stamina, durability, healing factor, teleportation, immortality",1991
+19,Thor,Superhero,"superhuman strength, speed, agility, durability, immunity to diseases, possesion of mjolnir ( power over storms and generates energy blasts known as anti-force)",1962
+20,Green Goblin,Supervillain,"Superhuman strength, stamina, durability, agility, reflexes, regeneration, genius-level intellect, master hand-to-hand combatant, a Goblin Glider which has a variety of offensive weapons",1964
+21,Mysterio,Supervillain,"expert designer of special effects devices and stage illusions, a master hypnotist and magician and an amateur chemist and roboticist",1964
+22,Black Cat,Supervillain,"reflexes, agility, stamina of an Olympic level acrobat",1979
+23,Iron-Man,Superhero,rich billionaire playboy,1962
