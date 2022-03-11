@@ -71,9 +71,6 @@ def create_tables(cursor):
                 print("already exists.")
             else:
                 print(err.msg)
-        else:
-            print("OK")
-
     return
 
 
@@ -122,19 +119,19 @@ def main():
 
     try:
         cursor.execute("USE {}".format(DB_NAME))
+        print("Database found successfuly!")
     except mysql.connector.Error as err:
         print("Database {} does not exist".format(DB_NAME))
-
         if err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Trying to create the database {}".format(DB_NAME))
             create_database(cursor, DB_NAME)
-            print("Database {} created succesfully.".format(DB_NAME))
             cnx.database = DB_NAME
-
-    create_tables(cursor)
-    readfile(cursor, cnx, "MarvelCharacters.csv", "characters")
-    readfile(cursor, cnx, "MarvelComicBooks.csv", "comic_books")
-    readfile(cursor, cnx, "MarvelMovies.csv", "movies")
-    readfile(cursor, cnx, "MarvelParticipants.csv", "participants")
+            create_tables(cursor)
+            readfile(cursor, cnx, "MarvelCharacters.csv", "characters")
+            readfile(cursor, cnx, "MarvelComicBooks.csv", "comic_books")
+            readfile(cursor, cnx, "MarvelMovies.csv", "movies")
+            readfile(cursor, cnx, "MarvelParticipants.csv", "participants")
+            print("Database {} created succesfully.".format(DB_NAME))
 
     cnx.close()
     cursor.close()
