@@ -1,11 +1,11 @@
-﻿name,year publication,Artist ,Writer,id
-Symbiote Spider-Man Vol 1 #5,2019,Greg Land,Peter David ,1
-Amazing Spider-Man Vol 1 #194,1979,Keith Pollard,Marv Wolfman,2
-Doctor Strange (2015) #389,2018,Niko Henrichon,Donny Cates ,3
-The Infinity Gauntlet #1,1991,George Pérez,Jim Starlin,4
-Tales of Suspense Vol 1 #39,1962,Don Heck,"Stan Lee, Larry Lieber",5
-Incredible Hulk Vol 1 #181,1974,Herb Trimpe,Len Wein,6
-Civil War: Front Line Vol 1 #1,2006,Ramon Bachs,Paul Jenkins,7
-Amazing Fantasies Vol 1 #15,1962,Steve Dikto,"Stan Lee, Steve Dikto",8
-Iron Man Vol 4 #4,2005,Adi Granov,Warren Ellis,9
-Avengers Vol 1 #1,1963,Jack Kirby,Stan Lee,10
+﻿id,name,year publication,artist ,writer
+1,Symbiote Spider-Man Vol 1 #5,2019,Greg Land,Peter David 
+2,Amazing Spider-Man Vol 1 #194,1979,Keith Pollard,Marv Wolfman
+3,Doctor Strange (2015) #389,2018,Niko Henrichon,Donny Cates 
+4,The Infinity Gauntlet #1,1991,George Pérez,Jim Starlin
+5,Tales of Suspense Vol 1 #39,1962,Don Heck,"Stan Lee, Larry Lieber"
+6,Incredible Hulk Vol 1 #181,1974,Herb Trimpe,Len Wein
+7,Civil War: Front Line Vol 1 #1,2006,Ramon Bachs,Paul Jenkins
+8,Amazing Fantasies Vol 1 #15,1962,Steve Dikto,"Stan Lee, Steve Dikto"
+9,Iron Man Vol 4 #4,2005,Adi Granov,Warren Ellis
+10,Avengers Vol 1 #1,1963,Jack Kirby,Stan Lee

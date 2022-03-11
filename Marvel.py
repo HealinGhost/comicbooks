@@ -79,6 +79,7 @@ def create_tables(cursor):
 
 # Reading csv and preparing them for sql
 def readfile(cursor, cnx, path, table_name):
+    print("Reading data for " + table_name)
     with open(path, "r") as csvfile:
         csvdata = csv.reader(csvfile, delimiter=",")
         line_count = 0
@@ -86,51 +87,28 @@ def readfile(cursor, cnx, path, table_name):
             if line_count == 0:
                 line_count += 1
             else:
-                new_list = []
-                for value in line:
-                    if value != "NA":
-                        new_list.append(value)
-                values = len(new_list)
-                temp_string = " VALUES ("
-                for i in range(values - 1):
-                    temp_string += "%s,"
-                temp_string += "%s)"
-                stor = tuple(new_list)
-                sql = "INSERT INTO " + table_name + temp_string
-                cursor.execute(sql, stor)
-                cnx.commit()
+                try:
+                    cursor.execute(insert_into_query(line, table_name))
+                    cnx.commit()
+                except mysql.connector.Error as err:
+                    print(err)
+
     return
 
 
-# Function that inserts the values in the given table
-def insert_into(cursor, cnx, data, table_name):
-    # Creates the insert line
-    temp_list = data
-    insert = "INSERT INTO " + table_name + " ("
-    for i in range(len(data[0]) - 1):
-        insert += data[0][i] + ", "
-    insert += data[0][-1] + ")"
-    print(insert)
-
-    # remove the first value, cause it is not used
-    del temp_list[0]
-    insert_sql = []
-    for row in temp_list:
-        new_string = insert + " " + row
-        insert_sql.append(new_string)
-
-    # executing in sql
-    for query in insert_sql:
-        try:
-            print("SQL query {}: ".format(query), end='')
-            cursor.execute(query)
-        except mysql.connector.Error as err:
-            print(err.msg)
+# Function that turns a list into a query
+def insert_into_query(row, table_name):
+    query = "INSERT INTO " + table_name + " VALUES ("
+    for i in range(len(row) - 1):
+        if row[i] == "NA":
+            query += "NULL, "
         else:
-            # Make sure data is committed to the database
-            cnx.commit()
-            print("OK")
-    return
+            query += "'" + row[i] + "', "
+    if row[len(row) - 1] == "NA":
+        query += "NULL)"
+    else:
+        query += "'" + row[len(row) - 1] + "')"
+    return query
 
 
 # Main
@@ -152,11 +130,11 @@ def main():
             print("Database {} created succesfully.".format(DB_NAME))
             cnx.database = DB_NAME
 
-    # create_tables(cursor)
-
-    data = []
-    readfile(cursor, cnx, "MarvelParticipants.csv", "participants")
+    create_tables(cursor)
+    readfile(cursor, cnx, "MarvelCharacters.csv", "characters")
+    readfile(cursor, cnx, "MarvelComicBooks.csv", "comic_books")
     readfile(cursor, cnx, "MarvelMovies.csv", "movies")
+    readfile(cursor, cnx, "MarvelParticipants.csv", "participants")
 
     cnx.close()
     cursor.close()
