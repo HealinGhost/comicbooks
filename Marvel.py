@@ -108,6 +108,117 @@ def insert_into_query(row, table_name):
     return query
 
 
+def gui(cursor):
+    response = "Y"
+    while(response.upper() == "Y"):
+        # The list of operations for the main menu.
+        print("Main Menu")
+        print("1.Print the characters of the comic book depending on the comic book id given")
+        print("2.Print the characters (having at least one comic book appearance) and their number of appearances")
+        print("3.Print the super power of the character given from the view created called allPowers")
+        print("4.Print the comic books where the wanted character appears")
+        print("5.Show what comic books some movies are inspired from")
+        print("6.Print the anticipated marvel characters for the movies in the database based on the comic books")
+        print("7.Show the average release year and the number of characters of each side")
+
+        result = input("Enter: ")
+
+        # Prints a part of the characters of the comic book depending on the comic book id given.
+        if result == "1":
+            print("1. Symbiote Spider-Man Vol 1 #5\
+                   \n2. Amazing Spider-Man Vol 1 #194 \
+                   \n3. Doctor Strange (2015) #389 \
+                   \n4. The Infinity Gauntlet #1\
+                   \n5. Tales of Suspense Vol 1 #39\
+                   \n6. Incredible Hulk Vol 1 #181\
+                   \n7. Civil War: Front Line Vol 1 #1\
+                   \n8. Amazing Fantasies Vol 1 #15\
+                   \n9. Iron Man Vol 4 #4\
+                   \n10. Avengers Vol 1 #1")
+            answer = str(input("Enter the id of the comic book wanted: "))
+            cursor.execute("SELECT ch.name FROM participants p \
+            INNER JOIN comic_books co ON co.id = p.comic_id \
+            INNER JOIN characters ch ON ch.id = p.character_id \
+            WHERE p.comic_id = " + answer)
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+        # Prints the characters with at least once appearance in the comic books inserted and the number of appearances.
+        elif result == "2":
+            cursor.execute("SELECT ch.name, count(ch.id) FROM characters ch \
+            INNER JOIN participants p ON ch.id = p.character_id \
+            GROUP BY ch.name")
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+
+        #We get all the species with the average height wanted.
+        elif result == "3":
+            print("Spider-Man\nWolverine\nColossus\nDoctor Doom\nSilver Surfer\nCaptain America\nDormammu\nMole Man \
+            \nMorbius\nRed Skull\nAnti-Venom\nHulk\nMagneto\nSabretooth\nDoctor Strange\nBlack Panther\nJuggernaut \
+            \nDeadpool\nThor\nGreen Goblin\nMysterio\nBlack Cat\nIron-Man")
+            answer = str(input("Enter the character wanted: "))
+            cursor.execute("SELECT super_power FROM allPowers WHERE name = " + "'" + answer + "'")
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+
+        # We get the climate which is most preferable for the wanted specie
+        elif result == "4":
+            print("1.Spider-Man\n2.Wolverine\n3.Colossus\n4.Doctor Doom\n5.Silver Surfer\n6.Captain America\n7.Dormammu\n8.Mole Man \
+            \n9.Morbius\n10.Red Skull\n11.Anti-Venom\n12.Hulk\n13.Magneto\n14.Sabretooth\n15.Doctor Strange\n16.Black Panther\n17.Juggernaut \
+            \n18.Deadpool\n19.Thor\n20.Green Goblin\n21.Mysterio\n22.Black Cat\n23.Iron-Man")
+            answer = str(input("Enter the id of the character wanted: "))
+            cursor.execute("SELECT co.name FROM participants p \
+            INNER JOIN comic_books co ON co.id = p.comic_id \
+            INNER JOIN characters ch ON ch.id = p.character_id \
+            WHERE " + answer + " = p.character_id")
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+
+        # We get the comic book which partially inspired a movie
+        elif result == "5":
+            cursor.execute("SELECT m.title, co.name FROM movies m, comic_books co WHERE m.comic_id = co.id")
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+        # We get the anticipated charcaters for the movies
+        elif result == "6":
+            cursor.execute("SELECT m.title, ch.name FROM participants p \
+            INNER JOIN characters ch ON p.character_id = ch.id \
+            INNER JOIN comic_books cb ON cb.id = p.comic_id \
+            INNER JOIN movies m ON m.comic_id = cb.id")
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+        # We get the sides, the average release year and how many characters of each side there are
+        elif result == "7":
+            cursor.execute("SELECT side, AVG(release_year), COUNT(side) FROM characters GROUP BY side")
+            for i in cursor:
+                print(i)
+            response = input("To go back to main menu, press Y: ")
+            print("")
+
+        else:
+            print("Wrong input!")
+            print("")
+
+    return
+
+
 # Main
 def main():
 
@@ -131,10 +242,13 @@ def main():
             readfile(cursor, cnx, "MarvelComicBooks.csv", "comic_books")
             readfile(cursor, cnx, "MarvelMovies.csv", "movies")
             readfile(cursor, cnx, "MarvelParticipants.csv", "participants")
+            cursor.execute("CREATE VIEW allPowers AS SELECT name, super_power FROM characters ch")
             print("Database {} created succesfully.".format(DB_NAME))
 
+    gui(cursor)
     cnx.close()
     cursor.close()
+
     return
 
 
